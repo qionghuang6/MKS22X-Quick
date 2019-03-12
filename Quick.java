@@ -1,3 +1,4 @@
+import java.util.Arrays;
 public class Quick{
   /*return the value that is the kth smallest value of the array.
  */
@@ -24,15 +25,25 @@ public class Quick{
  }
 
  public static int quickselect(int []data, int k){
-   int min = 0;
+   int min = 0; //set basic max and min for the data
    int max = data.length;
-   int pivot = partition(data,min,max);
+   int pivot = -1;
    while(pivot != k){
+     //System.out.println(Arrays.toString(data) + " " + min + " " + max);
+     pivot = partition(data,min,max); //calls parition again
      if(pivot < k){
-       max = pivot;
-       pivot = partition();
+       min = pivot; //narrows down range where we search for the index
      }
+     if(pivot > k){
+       max = pivot;
+     }
+
    }
+  // System.out.println(Arrays.toString(data) + " " + min + " " + max);
    return data[k];
+ }
+ public static void main(String[] args) {
+   int[] numbers = {765,564,123,212,324,56,76,8,123,34};
+   System.out.println(quickselect(numbers, 4));
  }
 }
