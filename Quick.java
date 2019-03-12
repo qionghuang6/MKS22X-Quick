@@ -3,7 +3,12 @@ public class Quick{
   /*return the value that is the kth smallest value of the array.
  */
  public static int partition ( int [] data, int start, int end){
-   int pivotIndex = (int)(Math.random() * (end - start)) + start; // chooses random pivot index
+   int[] pivotPossibilities = new int[3];
+   for (int x = 0;x < 3 ;x++ ) {
+     pivotPossibilities[x] = (int)(Math.random() * (end - start)) + start;
+   }
+   Arrays.sort(pivotPossibilities);
+   int pivotIndex = pivotPossibilities[1]; // chooses random pivot index
    int pivot = data[pivotIndex]; //sets the pivot
    int pointer = start + 1; //points to value right after start
    data[pivotIndex] = data[start]; //moves pivot to front
