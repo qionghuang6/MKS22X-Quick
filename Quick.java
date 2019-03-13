@@ -13,10 +13,11 @@ public class Quick{
    int pointer = start; //points to value right after start
    data[pivotIndex] = data[start]; //moves pivot to front
    data[start] = pivot;
-   //System.out.println(pivot);
-   for (int x = start; x < end ; x++ ) {
+   //System.out.println("pivot index " + pivotIndex );
+   //System.out.println("pivot: " + pivot);
+   for (int x = start + 1; x < end ; x++ ) {
      //System.out.println(Arrays.toString(data));
-     //System.out.println(pointer);
+     //System.out.println("pointer " + pointer);
      if(data[x] < pivot  || (data[x] == pivot && Math.random() > 0.5) ){ //swaps value at pointer and moves pivot if below
        pointer++; //moves pointer up
        int temp = data[pointer];
@@ -34,7 +35,7 @@ public class Quick{
    int max = data.length;
    int pivot = -1;
    while(pivot != k){
-     //System.out.println(Arrays.toString(data) + " " + min + " " + max);
+     System.out.println(Arrays.toString(data) + " " + min + " " + max);
      pivot = partition(data,min,max); //calls parition again
      if(pivot < k){
        min = pivot; //narrows down range where we search for the index
@@ -44,13 +45,16 @@ public class Quick{
      }
 
    }
-  // System.out.println(Arrays.toString(data) + " " + min + " " + max);
+   System.out.println(Arrays.toString(data) + " " + min + " " + max);
    return data[k];
  }
  public static void main(String[] args) {
    int[] numbers = {765,564,123,212,324,56,76,8,123,123,123,34};
    System.out.println(partition(numbers,0,numbers.length));
-   System.out.println(Arrays.toString(numbers));
-  System.out.println(quickselect(numbers, 4));
+   System.out.println(Arrays.toString(numbers) + "hi");
+  //System.out.println(quickselect(numbers, 4));
+ }
+ public static void quicksort(int[] data){
+
  }
 }
