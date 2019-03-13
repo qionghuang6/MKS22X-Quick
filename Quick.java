@@ -49,12 +49,29 @@ public class Quick{
    return data[k];
  }
  public static void main(String[] args) {
-   int[] numbers = {765,564,123,212,324,56,76,8,123,123,123,34};
+   /* int[] numbers = {765,564,123,212,324,56,76,8,123,123,123,34};
    System.out.println(partition(numbers,0,numbers.length));
    System.out.println(Arrays.toString(numbers) + "hi");
-  //System.out.println(quickselect(numbers, 4));
+  //System.out.println(quickselect(numbers, 4))
+  */
+  int[] ary1 = {32,32,4,32,213,2213,5435,76,21,34,75};
+  int[] ary2 = {32,32,4,32,213,2213,5435,76,21,34,75};
+  quicksort(ary1);
+  quicksort(ary2);
+  System.out.println(Arrays.toString(ary1));
+  System.out.println(Arrays.toString(ary2));
  }
  public static void quicksort(int[] data){
-
+   quicksort(data,0,data.length);
+ }
+ private static void quicksort(int[] ary, int lo, int hi){
+   System.out.println("low / hi" + lo + " " + hi);
+   //System.out.println(Arrays.toString(ary));
+   if (lo >= hi){
+     return;
+   }
+   int pivot = partition(ary,lo,hi);
+   quicksort(ary,lo,pivot);
+   quicksort(ary,pivot+ 1,hi);
  }
 }
