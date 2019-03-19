@@ -2,7 +2,20 @@ import java.util.Arrays;
 public class Quick{
   /*return the value that is the kth smallest value of the array.
  */
- public static int partition ( int [] data, int start, int end){
+ private static void insertionSort(int[] data){
+ //loop from start to end
+ for(int x = 1; x < data.length; x++){
+   int repVal = data[x];
+   int y = x;
+   //go backwards and shift until you find right place for data[x]
+   while(y > 0 && repVal < data[y - 1]){
+       data[y] = data[--y];
+   }
+   data[y] = repVal;
+ }
+}
+
+ private static int partition ( int [] data, int start, int end){
    int[] pivotPossibilities = new int[3];
    for (int x = 0;x < 3 ;x++ ) {
      pivotPossibilities[x] = (int)(Math.random() * (end - start)) + start;
@@ -98,7 +111,11 @@ public static void main(String[]args){
 }
 
  public static void quicksort(int[] data){
-   quicksort(data,0,data.length);
+   if(data.length < 100){
+     insertionSort(data);
+   } else{
+     quicksort(data,0,data.length);
+   }
  }
  private static void quicksort(int[] ary, int lo, int hi){
    //System.out.println("low / hi" + lo + " " + hi);
